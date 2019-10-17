@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>CipherExplorer</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col mt-4">
+          <div class="row">
+            <div class="col d-flex justify-content-between">
+                <h1 class=""><a href="http://www.rodrigoperez.me"><i class="fa fa-angle-left"></i></a></h1>
+                <h1 class="">CipherExplorer</h1>
+                <h1 class=""><i class="fa fa-github"></i></h1>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col d-flex justify-content-center align-items-center">
+              <a class="btn bg-crimson mx-2" href="#1">Caesar Cipher</a>
+              <a class="btn bg-crimson mx-2" href="#2">Playfair Cipher</a>
+              <a class="btn bg-crimson mx-2" href="#3">Vigenere Cipher</a>
+            </div>
+          </div>
+
+          <!-- Beginning of carousel -->
+          <div class="owl-carousel owl-theme">
+            <!-- Caesar Cipher -->
+
+            <div class="item" data-hash="1">
+              <div class="container">
+                <div class="row justify-content-center align-items-center">
+                  <div class="col p-4 cipher-card">
+                    <div class="row align-items-start">
+                      <div class="col d-flex align-items-center justify-content-left align-self-center">
+                        <h1 class="m-0">Caesar Cipher</h1>
+                      </div>
+
+                      <div id="csNewtoggleCeasar" class="col d-flex align-items-center justify-content-end align-self-center">
+                        <fieldset id="csCryptSwitch">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input "
+                              type="radio"
+                              name="csCryptSwitch"
+                              id="csCryptSwitch1"
+                              value="encrypt"
+                              checked="checked"
+                            />
+                            <label class="form-check-label " for="csCryptSwitch1">
+                              Encrypt
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="csCryptSwitch"
+                              id="csCryptSwitch2"
+                              value="decrypt"
+                            />
+                            <label class="form-check-label" for="csCryptSwitch2">
+                              Decrypt
+                            </label>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-center mt-3">
+                      <div class="col">
+                        <form>
+                          <div class="form-group">
+                            <h4 id="csInputLabel" for="cs_masterInput"></h4>
+                            <textarea class="form-control" id="cs_masterInput" rows="3">
+Do not meddle in the affairs of wizards for they are subtle and quick to anger</textarea>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                      <div class="col d-flex align-items-end"><h4 id="csOutputLabel" for="cs_masterOutput"></h4></div>
+                     
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <form>
+                          <div class="form-group">
+                            <textarea class="form-control text-crimson" id="cs_masterOutput" rows="3"></textarea>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Playfair Cipher -->
+
+            <div class="item" data-hash="2">
+              <div class="container">
+                <div class="row justify-content-center align-items-center">
+                  <div class="col p-4 cipher-card">
+                    <div class="row align-items-start">
+                      <div class="col d-flex align-items-center justify-content-left align-self-center">
+                        <h1 class="m-0">Playfair Cipher</h1>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-center mt-3">
+                      <div class="col align-items-center justify-content-left align-self-center">
+                        <!-- <p>
+                          Input a keyword below to seed the key table. All keywords are converted to uppercase and
+                          should contain only alphabetic characters. Any non-alphabetic characters and duplicate
+                          characters are automatically stripped. The key table is filled in with the rest of the unused
+                          alphabet.
+                        </p> -->
+                        <div class="row">
+                          <div class="col">
+                            <input class="form-control" rows="1" id="keyword" value="Radagast" />
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col">
+                            <button class="btn btn-block mt-2 bg-crimson" id="generateKeytable">Generate Key Table</button>
+                            <button class="btn btn-block bg-crimson" id="regenerateKeytable" style="display: none">
+                              Regenerate Key Table
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col">
+                        <div id="keyTable"></div>
+                      </div>
+                    </div>
+
+                    <div id="AfterGen" style="display: none" class="row mt-4">
+                      <div class="col">
+                        <form>
+                          <div class="form-group">
+                            <div class="row">
+                              <div class="col d-flex">
+                                <textarea class="form-control" id="en" rows="3">Adventures</textarea>
+                              </div>
+                            </div>
+                            <div class="row mt-2">
+                              <div class="col d-flex">
+                                <button class="btn bg-crimson" id="encipher">Encrypt</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="col">
+                        <form>
+                          <div class="form-group">
+                            <div class="row">
+                              <div class="col d-flex">
+                                <textarea class="form-control text-crimson" id="de" rows="3"></textarea>
+                              </div>
+                            </div>
+                            <div class="row mt-2">
+                              <div class="col d-flex">
+                                <button class="btn bg-crimson" id="decipher">Decrypt</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vigenere Cipher -->
+
+            <div class="item" data-hash="3">
+              <div class="container">
+                <div class="row justify-content-center align-items-center vCipher">
+                  <div class="col p-4 cipher-card">
+                    <div class="row align-items-start">
+                      <div class="col col-lg-7 d-flex align-items-center justify-content-left align-self-center">
+                        <h1 class="m-0">Vigenere Cipher</h1>
+                      </div>
+                      <div class="col d-flex align-items-center justify-content-end align-self-center">
+                        <fieldset>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="mode"
+                              value="encrypt"
+                              id="vigCryptSwitch1"
+                              checked="checked"
+                            />
+                            <label class="form-check-label " for="vigCryptSwitch1">Encrypt</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mode" value="decrypt" id="vigCryptSwitch2" />
+                            <label class="form-check-label" for="vigCryptSwitch2">Decrypt</label>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-center mt-3">
+                      <div class="col">
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <h4 for="key">Key</h4>
+                              <input class="form-control" id="key" type="text" value="Samwise" />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col">
+                            <form>
+                              <div class="form-group">
+                                <h4 id="vigInputLabel" for="vig_masterInput"></h4>
+                                <textarea class="form-control" id="input" rows="2">Never laugh at live dragons.</textarea>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                      <div class="col d-flex align-items-end">
+                        <h4 id="vigOutputLabel" for="vig_masterOutput"></h4>
+                      </div>
+                
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <form>
+                          <div class="form-group">
+                            <textarea class="form-control text-crimson" id="output" rows="2"></textarea>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of carousel -->
+
+      <footer class="footer">
+        <div class="container">
+          <!-- <span class="text-muted">Place sticky footer content here.</span> -->
+        </div>
+      </footer>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/owl.carousel.min.js"></script>
+    <script src="scripts/jquery.mousewheel.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/ciphers/caesar.js"></script>
+    <script src="scripts/ciphers/playfair.js"></script>
+    <script src="scripts/ciphers/vigenere.js"></script>
+
+  </body>
+</html>
